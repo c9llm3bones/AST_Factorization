@@ -32,6 +32,12 @@ MANIFEST
 *.manifest
 *.spec
 
+# Data
+*.csv
+
+#Java 
+/out/*
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
