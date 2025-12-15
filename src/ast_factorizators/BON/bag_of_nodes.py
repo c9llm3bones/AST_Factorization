@@ -27,8 +27,7 @@ def bag_of_nodes_factorization(ast: Dict[str, Any]) -> List[int]:
         vec[TYPE_TO_IDX[typ]] = cnt
     return vec
 
-if __name__ == "__main__":
-    with open("output_ast/train/74.json", encoding="utf8") as f:
-        data = json.load(f)
-    vec = bag_of_nodes_factorization(data["ast"])
-    print(f"Вектор длиной {len(vec)}, ненулевых: {sum(1 for x in vec if x)}")
+#with open("output_ast/train/74.json", encoding="utf8") as f:
+#    data = json.load(f)
+#vec = bag_of_nodes_factorization(data["ast"])
+#print(f"Вектор длиной {len(vec)}, ненулевых: {sum(1 for x in vec if x)}")
