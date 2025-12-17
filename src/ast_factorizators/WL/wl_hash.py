@@ -51,7 +51,7 @@ def bag_of_wl_hashes(ast: Dict[str, Any], sort_children: bool = False) -> Counte
 TOP_WL_HASHES = []
 HASH_TO_IDX = {}
 
-def build_wl_vocab(ast_dir: str, top_k: int = 5000, save_path: str = None):
+def build_wl_vocab(ast_dir: str, top_k: int = 3000, save_path: str = None):
     global TOP_WL_HASHES, HASH_TO_IDX
     total_counter = Counter()
     
@@ -91,5 +91,5 @@ def wl_hash_factorization(ast: Dict[str, Any]) -> list:
             vec[HASH_TO_IDX[h]] = cnt
     return vec
 
-#build_wl_vocab("output_ast/train", top_k=5000, save_path="src/ast_factorizators/WL/wl_vocab.json")
-#build_wl_vocab("output_ast_normalized/train", top_k=5000, save_path="src/ast_factorizators/WL/wl_vocab_normalized.json")
+#build_wl_vocab("output_ast/train", top_k=3000, save_path="src/ast_factorizators/WL/wl_vocab.json")
+#build_wl_vocab("output_ast_normalized/train", top_k=3000, save_path="src/ast_factorizators/WL/wl_vocab_normalized.json")
