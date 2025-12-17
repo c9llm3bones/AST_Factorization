@@ -18,7 +18,7 @@ from src.ast_factorizators.C2V.code2vec import c2v_factorization, load_c2v_vocab
 
 from src.ast_factorizators.C2V.code2vec import load_tfidf_vectorizer, ast_path_tfidf_factorization
 
-def get_factorizer(method: str, variant: str, max_depth: int = 8) -> Callable:
+def get_factorizer(method: str, variant: str, max_depth: int = 10) -> Callable:
     if method == "bon":
         return bag_of_nodes_factorization
     elif method == "wl":
@@ -30,7 +30,7 @@ def get_factorizer(method: str, variant: str, max_depth: int = 8) -> Callable:
         load_path_vocab(path)
         return lambda ast: bag_of_paths_factorization(ast, max_depth=max_depth)
     elif method == "tk":
-        path = f"src/ast_factorizators/TK/tk_vocab_{'raw' if variant == 'raw' else 'normalized'}.json"
+        path = f"src/ast_factorizators/TK/tk_vocab_{'raw' if variant == 'raw' else 'normalized'}_top3k.json"
         load_tk_vocab(path)
         return tree_kernel_factorization_with_vocab
     elif method == "c2v":
@@ -49,7 +49,7 @@ def precompute_vectors(
     split: str,
     input_ast_dir: str,
     output_vec_dir: str,
-    max_depth: int = 8  
+    max_depth: int = 10  
 ):
     factorizer = get_factorizer(method, variant, max_depth=max_depth)
     os.makedirs(output_vec_dir, exist_ok=True)
